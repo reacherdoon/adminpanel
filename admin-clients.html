@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Manage Clients</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="admin-card">
+      <div class="topbar">
+        <div></div>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+
+      <h1>Admin - Manage Clients</h1>
+
+      <form id="clientForm">
+        <input type="hidden" id="clientId">
+
+        <label for="clientName">Client Name</label>
+        <input id="clientName" type="text" placeholder="Enter client name" required>
+
+        <label for="clientEmail">Client Email</label>
+        <input id="clientEmail" type="email" placeholder="Enter client email" required>
+
+        <label for="landingPage">Landing Page</label>
+        <select id="landingPage" required>
+          <option value="US Advance America Style Page">US Advance America Style Page</option>
+          <option value="Loan Application Page">Loan Application Page</option>
+          <option value="Personal Loan Page">Personal Loan Page</option>
+          <option value="Custom Landing Page">Custom Landing Page</option>
+        </select>
+
+        <label for="tokenExpiry">Token Expiry Duration</label>
+        <select id="tokenExpiry" required>
+          <option value="7">7 Days</option>
+          <option value="15">15 Days</option>
+          <option value="30" selected>30 Days</option>
+          <option value="60">60 Days</option>
+          <option value="90">90 Days</option>
+        </select>
+
+        <label for="status">Status</label>
+        <select id="status">
+          <option value="Active">Active</option>
+          <option value="Pending">Pending</option>
+          <option value="Expired">Expired</option>
+          <option value="Disabled">Disabled</option>
+        </select>
+
+        <div class="form-actions">
+          <button id="saveBtn" class="primary-btn" type="submit">Add Client</button>
+          <button id="cancelEditBtn" class="secondary-btn hidden" type="button">Cancel Edit</button>
+        </div>
+
+        <p id="formMessage" class="message"></p>
+      </form>
+
+      <div class="table-section">
+        <div class="table-heading">
+          <h2>Clients</h2>
+          <input id="searchInput" class="search-input" type="search" placeholder="Search clients...">
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Email</th>
+                <th>Landing Page</th>
+                <th>Expiry</th>
+                <th>Status</th>
+                <th>Token</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="clientsBody">
+              <tr><td colspan="7" class="empty">Loading clients...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/clients.js"></script>
+</body>
+</html>
